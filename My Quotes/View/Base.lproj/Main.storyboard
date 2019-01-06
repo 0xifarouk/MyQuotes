@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qkp-XR-WKh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Quotes Generator-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="NewQuoteViewController" customModule="My_Quotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oSv-IL-Cmv">
+                                <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                                <textAttributes key="largeTitleTextAttributes">
+                                    <color key="textColor" red="0.20190948247909546" green="0.26049831509590149" blue="0.40787369012832642" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Quotes Generator" id="FzB-Kw-bPV">
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="add" id="RbV-pb-o7c">
+                                                <connections>
+                                                    <action selector="saveButtonDidPressed:" destination="BYZ-38-t0r" id="pKz-kG-JaN"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem systemItem="refresh" id="trA-Wj-7Wn">
+                                                <connections>
+                                                    <action selector="newQuoteButtonPressed:" destination="BYZ-38-t0r" id="lgi-GG-dhu"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="11" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Y9-ge-seF">
+                                <rect key="frame" x="0.0" y="118.5" width="375" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="ljS-Il-FFE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                <color key="textColor" name="Color-0"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1mr-xy-hrU">
+                                <rect key="frame" x="169" y="335" width="37" height="37"/>
+                                <color key="color" name="Color-3"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" name="Color-4"/>
+                        <color key="tintColor" name="Color-2"/>
+                        <constraints>
+                            <constraint firstItem="oSv-IL-Cmv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="86K-sf-NBj"/>
+                            <constraint firstItem="3Y9-ge-seF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CzG-GL-wXd"/>
+                            <constraint firstItem="oSv-IL-Cmv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FsV-Of-vDV"/>
+                            <constraint firstAttribute="trailing" secondItem="3Y9-ge-seF" secondAttribute="trailing" id="V4p-zU-xxA"/>
+                            <constraint firstItem="1mr-xy-hrU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="VaT-On-did"/>
+                            <constraint firstItem="oSv-IL-Cmv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cBZ-Xb-MGL"/>
+                            <constraint firstItem="3Y9-ge-seF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="35" id="tES-u1-8RT"/>
+                            <constraint firstItem="1mr-xy-hrU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xrT-Hi-D0D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Quotes Generator" image="ball_point_pen" id="RjT-Iv-fwx"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="1mr-xy-hrU" id="f3e-Bb-OLs"/>
+                        <outlet property="addButton" destination="RbV-pb-o7c" id="Cel-G7-g6a"/>
+                        <outlet property="naviagtionItem" destination="FzB-Kw-bPV" id="CMV-WM-DKE"/>
+                        <outlet property="navigationBar" destination="oSv-IL-Cmv" id="odO-xp-F59"/>
+                        <outlet property="quoteLable" destination="3Y9-ge-seF" id="9c6-lG-mCj"/>
+                        <outlet property="refreshButton" destination="trA-Wj-7Wn" id="zeQ-22-BRz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1110" y="134"/>
+        </scene>
+        <!--My Quotes-->
+        <scene sceneID="i1q-ir-UrE">
+            <objects>
+                <tableViewController id="yWh-AP-tTZ" customClass="MyQuotesTableViewController" customModule="My_Quotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gJh-ib-Jx4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="Color-4"/>
+                        <color key="separatorColor" name="Color-1"/>
+                        <color key="sectionIndexBackgroundColor" name="Color-4"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" largeTitles="YES" id="2E8-mE-76V">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textAttributes key="largeTitleTextAttributes">
+                                <color key="textColor" red="0.20190948247909546" green="0.26049831509590149" blue="0.40787369012832642" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </textAttributes>
+                            <items>
+                                <navigationItem title="My Quotes" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="FJP-Mo-Elz">
+                                    <barButtonItem key="rightBarButtonItem" systemItem="stop" id="sfa-0W-re0">
+                                        <color key="tintColor" name="Color-2"/>
+                                        <connections>
+                                            <action selector="resetHelpViews:" destination="yWh-AP-tTZ" id="ax3-PA-oWj"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="160" id="ko5-st-2dv" customClass="MyTableViewCell" customModule="My_Quotes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="124" width="375" height="160"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ko5-st-2dv" id="TSN-Ke-PRO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42j-Bb-1Ul">
+                                            <rect key="frame" x="16" y="11" width="343" height="138"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="xD7-SL-Nwc">
+                                                    <rect key="frame" x="8" y="8" width="327" height="106"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                                    <color key="textColor" name="Color-4"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yi3-rz-IIK">
+                                                    <rect key="frame" x="8" y="114" width="327" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="67U-5a-rjQ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                    <color key="textColor" name="Color-4"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.20190948247909546" green="0.26049831509590149" blue="0.40787369012832642" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstItem="yi3-rz-IIK" firstAttribute="top" secondItem="xD7-SL-Nwc" secondAttribute="bottom" id="62w-fQ-Msj"/>
+                                                <constraint firstItem="xD7-SL-Nwc" firstAttribute="leading" secondItem="42j-Bb-1Ul" secondAttribute="leadingMargin" id="F3q-VD-LVG"/>
+                                                <constraint firstItem="xD7-SL-Nwc" firstAttribute="top" secondItem="42j-Bb-1Ul" secondAttribute="topMargin" id="km6-Ny-EZC"/>
+                                                <constraint firstItem="yi3-rz-IIK" firstAttribute="leading" secondItem="42j-Bb-1Ul" secondAttribute="leading" constant="8" id="oKD-82-VDt"/>
+                                                <constraint firstAttribute="bottom" secondItem="yi3-rz-IIK" secondAttribute="bottom" constant="3" id="oLh-Xt-3g3"/>
+                                                <constraint firstItem="xD7-SL-Nwc" firstAttribute="trailing" secondItem="42j-Bb-1Ul" secondAttribute="trailingMargin" id="pXg-vm-cuJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="yi3-rz-IIK" secondAttribute="trailing" constant="8" id="zXU-r1-xZH"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="42j-Bb-1Ul" firstAttribute="top" secondItem="TSN-Ke-PRO" secondAttribute="topMargin" id="7VT-Jg-SNu"/>
+                                        <constraint firstItem="42j-Bb-1Ul" firstAttribute="bottom" secondItem="TSN-Ke-PRO" secondAttribute="bottomMargin" id="F6s-AY-cTa"/>
+                                        <constraint firstItem="42j-Bb-1Ul" firstAttribute="leading" secondItem="TSN-Ke-PRO" secondAttribute="leadingMargin" id="sNo-HY-ipr"/>
+                                        <constraint firstItem="42j-Bb-1Ul" firstAttribute="trailing" secondItem="TSN-Ke-PRO" secondAttribute="trailingMargin" id="vfQ-Qk-5VD"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" name="Color-4"/>
+                                <connections>
+                                    <outlet property="author" destination="yi3-rz-IIK" id="moD-Tz-KQ9"/>
+                                    <outlet property="content" destination="xD7-SL-Nwc" id="j4g-PS-RBD"/>
+                                    <outlet property="customBackgroundView" destination="42j-Bb-1Ul" id="bZj-rM-sXv"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yWh-AP-tTZ" id="f2C-jW-5V4"/>
+                            <outlet property="delegate" destination="yWh-AP-tTZ" id="I3U-8u-YSL"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="My Quotes" image="book" id="xIG-m4-sVb"/>
+                    <connections>
+                        <outlet property="helpView" destination="eph-Gw-joH" id="NRr-4T-sDq"/>
+                        <outlet property="navigationBar" destination="2E8-mE-76V" id="geK-Ec-hZX"/>
+                        <outlet property="noQuotesView" destination="PSM-Cg-ldV" id="lLp-Ww-RFc"/>
+                        <outlet property="quoteTableView" destination="gJh-ib-Jx4" id="dPE-te-J5g"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xRL-7w-XD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="PSM-Cg-ldV">
+                    <rect key="frame" x="0.0" y="0.0" width="395" height="161"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84X-1n-qO4">
+                            <rect key="frame" x="39" y="48" width="317.5" height="65"/>
+                            <string key="text">You don't have any quotes! 
+Try adding one :)</string>
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                            <color key="textColor" name="Color-0"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="Color-4"/>
+                    <color key="tintColor" name="Color-4"/>
+                    <constraints>
+                        <constraint firstItem="84X-1n-qO4" firstAttribute="centerY" secondItem="PSM-Cg-ldV" secondAttribute="centerY" id="5Q2-tD-06x"/>
+                        <constraint firstItem="84X-1n-qO4" firstAttribute="centerX" secondItem="PSM-Cg-ldV" secondAttribute="centerX" id="Ohl-Vy-vBT"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="NP3-km-XIL"/>
+                </view>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" id="eph-Gw-joH">
+                    <rect key="frame" x="0.0" y="0.0" width="365" height="484"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mAZ-xi-Wvc">
+                        <rect key="frame" x="0.0" y="0.0" width="365" height="484"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WTe-VB-aFP">
+                                <rect key="frame" x="18" y="150" width="329" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe rows to delete!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAU-Np-oTT">
+                                        <rect key="frame" x="0.0" y="0.0" width="329" height="30"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="23"/>
+                                        <color key="textColor" name="Color-4"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipeToDelete" translatesAutoresizingMaskIntoConstraints="NO" id="XdL-86-sLa">
+                                        <rect key="frame" x="0.0" y="50" width="329" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="GQc-Sp-9IO"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJZ-hx-wmn" customClass="myCustomButton" customModule="My_Quotes" customModuleProvider="target">
+                                <rect key="frame" x="18" y="400" width="329" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hRo-hv-6W3"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeHelpView:" destination="yWh-AP-tTZ" eventType="touchUpInside" id="JJQ-g3-o2t"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="WTe-VB-aFP" firstAttribute="leading" secondItem="mAZ-xi-Wvc" secondAttribute="leading" constant="18" id="E3y-PW-BTs"/>
+                            <constraint firstItem="WTe-VB-aFP" firstAttribute="top" secondItem="mAZ-xi-Wvc" secondAttribute="top" constant="150" id="FPq-Dd-Jxy"/>
+                            <constraint firstAttribute="trailing" secondItem="WTe-VB-aFP" secondAttribute="trailing" constant="18" id="LL6-Xa-aZV"/>
+                            <constraint firstAttribute="bottom" secondItem="XJZ-hx-wmn" secondAttribute="bottom" constant="40" id="NE2-4R-nBC"/>
+                            <constraint firstAttribute="trailing" secondItem="XJZ-hx-wmn" secondAttribute="trailing" constant="18" id="goA-4w-iYq"/>
+                            <constraint firstItem="XJZ-hx-wmn" firstAttribute="leading" secondItem="mAZ-xi-Wvc" secondAttribute="leading" constant="18" id="uBR-Xs-uaQ"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+                <view contentMode="scaleToFill" id="MF9-Rb-IkI">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="iSm-3K-i7B"/>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="2313" y="134"/>
+        </scene>
+        <!--Custom Tab Bar View Controller-->
+        <scene sceneID="FyR-DE-CpN">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qkp-XR-WKh" customClass="customTabBarViewController" customModule="My_Quotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aMw-Nu-xby">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="Color-1"/>
+                        <color key="barTintColor" red="0.87850004434585571" green="0.87389093637466431" blue="0.9255027174949646" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="selectedImageTintColor" name="Color-2"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="w8z-SL-0p5"/>
+                        <segue destination="yWh-AP-tTZ" kind="relationship" relationship="viewControllers" id="zRF-LR-0Ey"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ay5-4b-Yl9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ball_point_pen" width="30" height="30"/>
+        <image name="book" width="30" height="30"/>
+        <image name="swipeToDelete" width="1242" height="476"/>
+        <namedColor name="Color-0">
+            <color red="0.18823529411764706" green="0.2627450980392157" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Color-1">
+            <color red="0.52156862745098043" green="0.50196078431372548" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Color-2">
+            <color red="0.92549019607843142" green="0.32156862745098042" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Color-3">
+            <color red="0.85098039215686272" green="0.47843137254901963" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Color-4">
+            <color red="0.98431372549019602" green="0.98039215686274506" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
