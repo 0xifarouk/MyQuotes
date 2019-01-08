@@ -11,14 +11,14 @@ import CoreData
 
 class NewQuoteViewController: UIViewController {
     
-    var dataController: DataController!
-    var quotes: [Quote]!
     @IBOutlet weak var quoteLable: UILabel!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var naviagtionItem: UINavigationItem!
+    var dataController: DataController!
+    var quotes: [Quote]!
     static var quoteContent: String!
     static var quoteAuthor: String!
     
@@ -71,6 +71,7 @@ class NewQuoteViewController: UIViewController {
     }
     
     @IBAction func newQuoteButtonPressed(_ sender: Any) {
+
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.prepare()
         generator.impactOccurred()
@@ -93,19 +94,26 @@ class NewQuoteViewController: UIViewController {
     }
     
     @IBAction func saveButtonDidPressed(_ sender: Any) {
-        //((quote.quote?.localizedCompare(NewQuoteViewController.quoteContent)) != nil)
+        
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.prepare()
         generator.impactOccurred()
-        for quote in quotes {
-            if quote.quote as! String == NewQuoteViewController.quoteContent {
-                showAlertWithOK(title: "Quote Already Exist", message: "You have added this quote previously, do you want to add it again?")
-                return
+        let generatorNotificatoin = UINotificationFeedbackGenerator()
+        if quoteLable.text == "" {
+            
+            showAlert(title: "Error", message: "You can't add an empty quote, please try downlaoding one and try again.")
+             generatorNotificatoin.notificationOccurred(.error)
+        } else {
+            for quote in quotes {
+                if quote.quote as! String == NewQuoteViewController.quoteContent {
+                    showAlertWithOK(title: "Quote Already Exist", message: "You have added this quote previously, do you want to add it again?")
+                    return
+                }
             }
+            saveQuoteToCoreData()
+            makeFetchRequest()
         }
-        saveQuoteToCoreData()
-        makeFetchRequest()
-    }
+}
     
     
     func showAlert(title: String, message: String){
