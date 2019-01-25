@@ -10,8 +10,14 @@ import Foundation
 
 func getQuote(completion: @escaping (_ success: Bool, _ message: String?, _ data: [QuoteResponse]?) -> Void) {
     
-    let urlString = "https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=famous"
-    let url = URL(string: urlString)
+    var components = URLComponents()
+    components.scheme = "https"
+    components.host = "andruxnet-random-famous-quotes.p.rapidapi.com"
+    components.queryItems = [
+    URLQueryItem(name: "cat", value: "famous")
+    ]
+
+    let url = components.url
     var request = URLRequest(url: url!)
     request.httpMethod = "GET"
     request.addValue("a4d2c077cdmsh4ead31987373a89p13c71bjsne9b40d60142f", forHTTPHeaderField: "X-RapidAPI-Key")
