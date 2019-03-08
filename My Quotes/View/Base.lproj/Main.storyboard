@@ -119,6 +119,33 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FEu-g6-6f2">
+                                            <rect key="frame" x="275" y="0.0" width="100" height="160"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Delete" translatesAutoresizingMaskIntoConstraints="NO" id="497-WE-K9X">
+                                                    <rect key="frame" x="40" y="45" width="50" height="50"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0t-ms-ltd">
+                                                    <rect key="frame" x="42" y="99.5" width="46.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.57254904510000004" green="0.0" blue="0.23137255009999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="J0t-ms-ltd" secondAttribute="trailing" constant="11.5" id="Eet-9Q-hv2"/>
+                                                <constraint firstItem="J0t-ms-ltd" firstAttribute="leading" secondItem="FEu-g6-6f2" secondAttribute="leading" constant="42" id="NCf-PN-zEY"/>
+                                                <constraint firstItem="497-WE-K9X" firstAttribute="centerY" secondItem="FEu-g6-6f2" secondAttribute="centerY" constant="-10" id="RMe-ZD-s4c"/>
+                                                <constraint firstItem="J0t-ms-ltd" firstAttribute="top" secondItem="497-WE-K9X" secondAttribute="bottom" constant="4.5" id="X43-qW-JON"/>
+                                                <constraint firstAttribute="width" secondItem="FEu-g6-6f2" secondAttribute="height" multiplier="5:8" id="g3P-gZ-hkw"/>
+                                                <constraint firstItem="497-WE-K9X" firstAttribute="centerX" secondItem="FEu-g6-6f2" secondAttribute="centerX" constant="15" id="spA-NJ-vgd"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJI-24-i1s">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                            <color key="backgroundColor" name="Color-4"/>
+                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42j-Bb-1Ul">
                                             <rect key="frame" x="16" y="11" width="343" height="138"/>
                                             <subviews>
@@ -151,10 +178,17 @@
                                         </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="BJI-24-i1s" firstAttribute="leading" secondItem="TSN-Ke-PRO" secondAttribute="leading" id="0Zx-bD-FT8"/>
+                                        <constraint firstAttribute="bottom" secondItem="FEu-g6-6f2" secondAttribute="bottom" id="3ie-kE-ngC"/>
                                         <constraint firstItem="42j-Bb-1Ul" firstAttribute="top" secondItem="TSN-Ke-PRO" secondAttribute="topMargin" id="7VT-Jg-SNu"/>
+                                        <constraint firstAttribute="bottom" secondItem="BJI-24-i1s" secondAttribute="bottom" id="BUU-4T-vsW"/>
                                         <constraint firstItem="42j-Bb-1Ul" firstAttribute="bottom" secondItem="TSN-Ke-PRO" secondAttribute="bottomMargin" id="F6s-AY-cTa"/>
+                                        <constraint firstItem="FEu-g6-6f2" firstAttribute="top" secondItem="TSN-Ke-PRO" secondAttribute="top" id="JeC-ol-PQ1"/>
+                                        <constraint firstAttribute="trailing" secondItem="BJI-24-i1s" secondAttribute="trailing" id="lft-uD-7AT"/>
+                                        <constraint firstItem="BJI-24-i1s" firstAttribute="top" secondItem="TSN-Ke-PRO" secondAttribute="top" id="qmY-fv-dBG"/>
                                         <constraint firstItem="42j-Bb-1Ul" firstAttribute="leading" secondItem="TSN-Ke-PRO" secondAttribute="leadingMargin" id="sNo-HY-ipr"/>
                                         <constraint firstItem="42j-Bb-1Ul" firstAttribute="trailing" secondItem="TSN-Ke-PRO" secondAttribute="trailingMargin" id="vfQ-Qk-5VD"/>
+                                        <constraint firstAttribute="trailing" secondItem="FEu-g6-6f2" secondAttribute="trailing" id="zL4-4H-idi"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" name="Color-4"/>
@@ -162,6 +196,8 @@
                                     <outlet property="author" destination="yi3-rz-IIK" id="moD-Tz-KQ9"/>
                                     <outlet property="content" destination="xD7-SL-Nwc" id="j4g-PS-RBD"/>
                                     <outlet property="customBackgroundView" destination="42j-Bb-1Ul" id="bZj-rM-sXv"/>
+                                    <outlet property="lightBackgroudView" destination="BJI-24-i1s" id="YjR-fh-0y7"/>
+                                    <outlet property="rightView" destination="FEu-g6-6f2" id="bLK-Ps-kaE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -253,7 +289,7 @@ Try adding one :)</string>
                     <viewLayoutGuide key="safeArea" id="iSm-3K-i7B"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2313" y="134"/>
+            <point key="canvasLocation" x="2312.8000000000002" y="133.5832083958021"/>
         </scene>
         <!--Custom Tab Bar View Controller-->
         <scene sceneID="FyR-DE-CpN">
@@ -278,6 +314,7 @@ Try adding one :)</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Delete" width="50" height="50"/>
         <image name="ball_point_pen" width="30" height="30"/>
         <image name="book" width="30" height="30"/>
         <image name="swipeToDelete" width="1242" height="476"/>
@@ -297,4 +334,5 @@ Try adding one :)</string>
             <color red="0.98431372549019602" green="0.98039215686274506" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

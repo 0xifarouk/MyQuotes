@@ -10,15 +10,15 @@ import UIKit
 import CoreData
 
 class MyQuotesTableViewController: UITableViewController {
-
+    
     @IBOutlet var quoteTableView: UITableView!
     var dataController: DataController!
     var quotes: [Quote] = []
-
+    
     @IBOutlet var noQuotesView: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet var helpView: UIVisualEffectView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.backgroundColor = #colorLiteral(red: 0.5215686275, green: 0.5019607843, blue: 0.6588235294, alpha: 1)
@@ -39,24 +39,31 @@ class MyQuotesTableViewController: UITableViewController {
         DispatchQueue.main.async {
             self.quoteTableView.reloadData()
             if self.quotes.count > 0 {
+                //if self.tableView.visibleCells > 0
+                
                 if UserDefaults.standard.bool(forKey: "helpViewSeen") == false {
-                self.helpView.alpha = 1
-                   self.addHelperView()
-                    self.tabBarController?.tabBar.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.size.width, height: self.tabBarController?.tabBar.frame.size.height ?? 10)
+                    let cell = self.tableView.visibleCells[0] as! MyTableViewCell
+                    cell.makeSwapAnimation()
+                    UserDefaults.standard.set(true, forKey: "helpViewSeen")
+                    
+                    //Uncomment this code to make help view feature works again.
+//                    self.helpView.alpha = 1
+//                    self.addHelperView()
+//                    self.tabBarController?.tabBar.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.size.width, height: self.tabBarController?.tabBar.frame.size.height ?? 10)
                 }
             }
         }
     }
     
     func addHelperView() {
-            view.addSubview(helpView)
-            helpView.frame = view.frame
+        view.addSubview(helpView)
+        helpView.frame = view.frame
     }
     
     func removeHelperView() {
         self.helpView.removeFromSuperview()
     }
-
+    
     @IBAction func closeHelpView(_ sender: UIButton) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.prepare()
@@ -104,13 +111,13 @@ class MyQuotesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyTableViewCell
-
+        
         cell.content.text = quotes[indexPath.row].quote
         cell.author.text = quotes[indexPath.row].author
         cell.selectionStyle = .none
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view,actionPerformed: @escaping (Bool) -> Void) in
@@ -170,7 +177,7 @@ class MyQuotesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
     }
-
+    
 }
 
 extension MyQuotesTableViewController: PersistenceStackClient {
