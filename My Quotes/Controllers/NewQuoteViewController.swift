@@ -12,21 +12,26 @@ import CoreData
 class NewQuoteViewController: UIViewController {
     
     @IBOutlet weak var quoteLable: UILabel!
-    @IBOutlet weak var refreshButton: UIBarButtonItem!
-    @IBOutlet weak var addButton: UIBarButtonItem!
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var naviagtionItem: UINavigationItem!
+    
     var dataController: DataController!
     var quotes: [Quote]!
+    var refreshButton: UIBarButtonItem {
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(newQuoteButtonPressed))
+        return refreshButton
+    }
+    var addButton: UIBarButtonItem {
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(saveButtonDidPressed))
+        return addButton
+    }
     static var quoteContent: String!
     static var quoteAuthor: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
         downloadQuote()
         makeFetchRequest()
-        navigationBar.backgroundColor = #colorLiteral(red: 0.5215686275, green: 0.5019607843, blue: 0.6588235294, alpha: 1)
     }
     override func viewWillAppear(_ animated: Bool) {
         makeFetchRequest()
@@ -70,7 +75,7 @@ class NewQuoteViewController: UIViewController {
         }
     }
     
-    @IBAction func newQuoteButtonPressed(_ sender: Any) {
+    @objc func newQuoteButtonPressed(_ sender: Any) {
 
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.prepare()
@@ -93,7 +98,7 @@ class NewQuoteViewController: UIViewController {
         }
     }
     
-    @IBAction func saveButtonDidPressed(_ sender: Any) {
+    @objc func saveButtonDidPressed(_ sender: Any) {
         
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.prepare()
@@ -114,6 +119,18 @@ class NewQuoteViewController: UIViewController {
             makeFetchRequest()
         }
 }
+    
+    func setNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Qutoes Downloader"
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.875526011, green: 0.8698369861, blue: 0.9262552857, alpha: 1)
+        let attribute = [NSAttributedString.Key.foregroundColor: UIColor(named: "Color-0")!]
+        navigationController?.navigationBar.largeTitleTextAttributes = attribute
+        navigationController?.navigationBar.titleTextAttributes = attribute
+        navigationController?.navigationBar.tintColor = UIColor(named: "Color-2")
+        navigationItem.rightBarButtonItems = [addButton, refreshButton]
+    }
     
     
     func showAlert(title: String, message: String){

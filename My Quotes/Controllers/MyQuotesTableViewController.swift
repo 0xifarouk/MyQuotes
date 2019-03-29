@@ -16,12 +16,12 @@ class MyQuotesTableViewController: UITableViewController {
     var quotes: [Quote] = []
     
     @IBOutlet var noQuotesView: UIView!
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet var helpView: UIVisualEffectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.backgroundColor = #colorLiteral(red: 0.5215686275, green: 0.5019607843, blue: 0.6588235294, alpha: 1)
+        setNavigationBar()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +78,7 @@ class MyQuotesTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func resetHelpViews(_ sender: Any) {
+    @objc func resetHelpViews(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.prepare()
         generator.impactOccurred()
@@ -93,6 +93,18 @@ class MyQuotesTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         // show the alert
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "My Quotes"
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.875526011, green: 0.8698369861, blue: 0.9262552857, alpha: 1)
+        let attribute = [NSAttributedString.Key.foregroundColor: UIColor(named: "Color-0")!]
+        navigationController?.navigationBar.largeTitleTextAttributes = attribute
+        navigationController?.navigationBar.titleTextAttributes = attribute
+        navigationController?.navigationBar.tintColor = UIColor(named: "Color-2")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(resetHelpViews))
     }
     
     // MARK: - Table view data source
